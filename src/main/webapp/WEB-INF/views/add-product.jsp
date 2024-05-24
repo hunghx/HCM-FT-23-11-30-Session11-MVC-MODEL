@@ -17,7 +17,7 @@
 <body>
 <h1>Thêm mới sản phẩm</h1>
 <a href="/product?action=LIST">Quay lại</a>
-<form action="/product" method="post">
+<form action="/product" method="post" enctype="multipart/form-data">
     <div class="mb-3">
         <label for="name" class="form-label">Product Name</label>
         <input type="text" class="form-control" id="name" name="name" placeholder="product name...">
@@ -28,7 +28,8 @@
     </div>
     <div class="mb-3">
         <label for="image" class="form-label">Product Image</label>
-        <input type="text" class="form-control" name="image" id="image" placeholder="product name...">
+        <img src="" alt="" id="preview" width="100" height="150" style="object-fit: cover">
+        <input type="file" class="form-control" name="file" id="image" placeholder="product name...">
     </div>
     <div class="mb-3">
         <label for="stock" class="form-label">Product Stock</label>
@@ -41,6 +42,16 @@
     <input type="submit" name="action" value="ADD" class="btn btn-primary"/>
 </form>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-
+<script>
+    let inputImg = document.getElementById("image");
+    let imgPreview = document.getElementById("preview")
+    inputImg.onchange = ()=>{
+        // destructoring
+        const [file] = inputImg.files;
+        if (file){
+            imgPreview.src = URL.createObjectURL(file);
+        }
+    }
+</script>
 </body>
 </html>

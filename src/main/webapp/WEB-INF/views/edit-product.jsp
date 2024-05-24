@@ -17,7 +17,7 @@
 <body>
 <h1>Thêm mới sản phẩm</h1>
 <a href="/product?action=LIST">Quay lại</a>
-<form action="/product" method="post">
+<form action="/product" method="post" enctype="multipart/form-data">
     <div class="mb-3">
         <label for="id" class="form-label">Product Id</label>
         <input type="text" class="form-control" value="${product.id}" id="id" name="id" readonly>
@@ -32,7 +32,8 @@
     </div>
     <div class="mb-3">
         <label for="image" class="form-label">Product Image</label>
-        <input type="text" class="form-control" value="${product.image}" name="image" id="image" >
+        <img src="${product.image}" alt="" width="100" height="150" style="object-fit: cover">
+        <input type="file" class="form-control"  name="file" id="image" >
     </div>
     <div class="mb-3">
         <label for="stock" class="form-label">Product Stock</label>
